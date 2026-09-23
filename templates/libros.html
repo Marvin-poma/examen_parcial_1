@@ -7,17 +7,28 @@
     {% if usuario %}
         <p>Bienvenido, <strong>{{ usuario }}</strong> 👋</p>
     {% endif %}
-
-    <ul>
-        {% for libro in libros %}
-            <li>
-                <strong>{{ libro.titulo }}</strong> — {{ libro.autor }} —
-                {% if libro.disponibles > 0 %}
-                    <span style="color: green;">Disponible ({{ libro.disponibles }})</span>
-                {% else %}
-                    <span style="color: red;">No disponible</span>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Disponibilidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+                <tr>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.autor }}</td>
+                    <td>
+                        {% if libro.disponibles > 0 %}
+                            <span class="disponible">Disponible ({{ libro.disponibles }})</span>
+                        {% else %}
+                            <span class="no-disponible">No disponible</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
