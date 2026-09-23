@@ -4,6 +4,20 @@
 
 {% block contenido %}
     <h2>Lista de Libros</h2>
+    {% if usuario %}
+        <p>Bienvenido, <strong>{{ usuario }}</strong> 👋</p>
+    {% endif %}
 
-
+    <ul>
+        {% for libro in libros %}
+            <li>
+                <strong>{{ libro.titulo }}</strong> — {{ libro.autor }} —
+                {% if libro.disponibles > 0 %}
+                    <span style="color: green;">Disponible ({{ libro.disponibles }})</span>
+                {% else %}
+                    <span style="color: red;">No disponible</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
