@@ -5,6 +5,14 @@
 {% block contenido %}
     <h2>Bienvenido al Portal de Biblioteca</h2>
 
-    <p>Explora nuestra colección de libros y gestiona tu perfil.</p>
-    
+   {% if ultimo_usuario %}
+        <p>Último usuario registrado: <strong>{{ ultimo_usuario }}</strong></p>
+        <a href="/borrar_cookie">Eliminar cookie</a>
+    {% else %}
+        <p>Bienvenido al Portal de Biblioteca.</p>
+    {% endif %}
+
+    {% if mensaje == "sesion_cerrada" %}
+        <p style="color: green;">La sesión fue cerrada correctamente.</p>
+    {% endif %}
  {% endblock %}   
