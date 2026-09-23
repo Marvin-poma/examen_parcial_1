@@ -5,3 +5,29 @@
     <title>{% block titulo %}Portal de Biblioteca{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<body>
+    <header>
+        <h1>📚 Portal de Biblioteca</h1>
+        <nav>
+            <a href="/">Inicio</a> |
+            <a href="/libros">Libros</a> |
+            <a href="/perfil">Perfil</a> |
+            {% if session.usuario %}
+                <a href="/logout">Cerrar sesión</a>
+            {% else %}
+                <a href="/login">Login</a>
+            {% endif %}
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <hr>
+    <footer>
+        <small>TEM-742 Tecnologías Emergentes II</small>
+    </footer>
+</body>
+</html>
